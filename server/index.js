@@ -13,7 +13,11 @@ dotenv.config();
 app.use(bodyParser.json({limit:'30mb' ,extended:true}));
 app.use(bodyParser.urlencoded({limit:'30mb',extended:true}));
 
-app.use(cors());
+app.use(cors({
+    origin : ["https://memories-tawny.vercel.app"],
+    methods : ["POST","GET","PATCH","DELETE"],
+    credentials : true
+}));
 
 app.use('/users',userRoutes);
 app.use('/posts',postRoutes);
